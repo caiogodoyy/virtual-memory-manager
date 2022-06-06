@@ -2,7 +2,7 @@ compile: vm.c
 	gcc vm.c -o vm -lpthread
 
 run:
-	./vm addresses.txt fifo fifo
+	./vm addresses.txt lru lru
 
 clean:
-	rm -rf *.o vm outputs.txt
+	rm -rf *.o vm correct.txt
