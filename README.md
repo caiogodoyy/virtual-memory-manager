@@ -1,6 +1,3 @@
-# virtual-memory-manager
-Implementação de Infra. de Software (Memória Virtual)
-
 # Virtual Memory Management
 
 - CESAR School
