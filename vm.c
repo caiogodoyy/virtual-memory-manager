@@ -10,12 +10,6 @@
 #define MASK 255 // 00000000 11111111
 #define MAX_BITS 10
 
-struct thread_args
-{
-    int page_num;
-    int page_off;
-};
-
 // variaveis globais
 int flag, frame_num;
 int thread_id, memory_id, tlb_id, tlb_hit, page_fault, pages, count_tlb, count_memory; // contadores
@@ -64,10 +58,7 @@ int main(int argc, char const *argv[])
         for (int i = 0; i < TLB_SIZE; i++)
         {
             thread_id = 0;
-            struct thread_args arg;
-            arg.page_num = page_num;
-            arg.page_off = page_off;
-            if (pthread_create(&(threads[i]), NULL, tlb_check, (void *)&arg))
+            if (pthread_create(&(threads[i]), NULL, tlb_check, &page_num))
                 exit(0);
         }
         for (int i = 0; i < TLB_SIZE; i++)
@@ -168,9 +159,9 @@ int main(int argc, char const *argv[])
 void *tlb_check(void *arg)
 {
     pthread_mutex_lock(&mutex);
-    struct thread_args *args = (struct thread_args *)arg;
+    int page_num = *(int*) arg;
     int i = thread_id++;
-    if (tlb[i][0] == args->page_num)
+    if (tlb[i][0] == page_num)
     {
         flag = 1;
         tlb_hit++;
