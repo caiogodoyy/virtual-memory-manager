@@ -1,4 +1,5 @@
 # Virtual Memory Management
+Este projeto consiste em escrever um programa que traduza endereço lógico para físico para um espaço de endereço virtual de tamanho 65.536 bytes. Seu programa lerá de um arquivo contendo endereços lógicos e, usando um TLB e uma page table, irá traduzir cada endereço lógico para seu endereço físico correspondente e imprimir o valor do byte armazenado no endereço físico traduzido. Seu objetivo de aprendizado é usar a simulação para entender as etapas envolvidas na traduzindo endereços lógicos para físicos. Isso incluirá a resolução de falhas de página usando paginação por demanda, gerenciando um TLB e implementando um algoritmo de  substituição de página.
 
 - CESAR School
 - Software Insfrastructure (Operating Systems)
